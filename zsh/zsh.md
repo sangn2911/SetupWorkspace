@@ -1,5 +1,5 @@
 ## ZSH
-oh-my-zsh  
+oh-my-zsh
 
 ## Plugins
 zsh-autosuggestions  
