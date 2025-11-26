@@ -1,5 +1,6 @@
 ## Fonts
 JetBrainsMono-ExtraLight (Font size: 15)
+'MesloLGS NF' (Font size: 15)
 
 ## Extensions
 ### Version control
@@ -9,3 +10,4 @@ Better Git Line Blame - Mitchell Kember
 Excalidraw - pomdtr  
 ident-rainbow - oderwat
 Material Icon Theme - Philipp Kief (Classic Orange Folder Theme)
+Vim Theme
