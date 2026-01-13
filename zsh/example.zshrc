@@ -17,6 +17,7 @@ ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=#FF8700'
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[path]='fg=#FF8700'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[arg0]='none'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -88,6 +89,7 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
+    tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -122,9 +124,20 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # CUSTOMIZE: keybinds
-bindkey "^[z" backward-kill-word
-bindkey "^z" backward-kill-wordcode
+bindkey -v
+
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    echo -ne '\e[2 q'   # block-outline (normal mode)
+  else
+    echo -ne '\e[6 q'   # bar cursor (insert mode)
+  fi
+}
+zle -N zle-keymap-select
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+if ! [ -x "$(command -v go)" ]; then
+  source /etc/profile.d/my_env.sh
+fi

@@ -1,0 +1,106 @@
+{
+    // -- User settings
+    // Disable features
+    "chat.disableAIFeatures": true,
+    "chat.useAgentsMdFile": false,
+    "chat.agent.enabled": false,
+    "chat.agent.thinking.collapsedTools": "always",
+    "telemetry.editStats.enabled": false,
+    "telemetry.feedback.enabled": false,
+    // Vim
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.normal": "block-outline",
+    "vim.cursorStylePerMode.visual": "line",
+    "vim.cursorStylePerMode.replace": "line",
+    "vim.useSystemClipboard": true,
+    // Terminal
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.enablePersistentSessions": false,
+    "debug.console.fontFamily": "'MesloLGS NF'",
+    "debug.console.fontSize": 15,
+    // Workbench
+    "workbench.settings.showAISearchToggle": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Monokai",
+    // Editor
+    "window.zoomLevel": 1,
+    "editor.fontSize": 15,
+    "editor.fontFamily": "'MesloLGS NF'",
+    "editor.lineNumbers": "relative",
+    "editor.links": false,
+    "git.autorefresh": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": false,
+        "**/.git/subtree-cache/**": false
+    },
+    // -- Application settings
+    "extensions.autoCheckUpdates": false,
+    "telemetry.telemetryLevel": "off",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "c"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "c"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "x"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "c"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "c"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "x"
+            ]
+        }
+    ],
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "c"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "c"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "x"
+            ]
+        }
+    ],
+    "window.newWindowProfile": "Go"
+}

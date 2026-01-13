@@ -18,7 +18,7 @@
     {
         "key": "ctrl+shift+down",
         "command": "editor.action.copyLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
+        "when": "editorTextFocus && !editorReadonly && editorTextFocus && vim.mode == 'Visual'"
     },
     {
         "key": "ctrl+shift+alt+down",
@@ -259,6 +259,11 @@
         "when": "editorTextFocus && vim.mode == 'Visual'"
     },
     {
+        "key": "tab",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
         "key": "ctrl+c",
         "command": "editor.action.clipboardCopyAction",
         "when": "editorTextFocus && vim.mode == 'Normal'"
@@ -300,7 +305,7 @@
     },
     {
         "key": "ctrl+x",
-        "command": "editor.action.",
+        "command": "editor.action.clipboardCutAction",
         "when": "editorTextFocus && vim.mode == 'Visual'"
     },
     {
@@ -329,7 +334,64 @@
         "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
     },
     {
+        "key": "f4",
+        "command": "-references-view.next",
+        "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
         "key": "ctrl+p",
         "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "shift+alt+v",
+        "command": "toggleVim"
+    },
+    {
+        "key": "f12",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "alt+left",
+        "command": "workbench.action.decreaseViewSize"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "workbench.action.terminal.openNativeConsole",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.terminal.killEditor",
+        "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "editor.action.selectHighlights",
+        "when": "editorFocus && editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal' || vim.mode == 'Visual'"
     }
 ]

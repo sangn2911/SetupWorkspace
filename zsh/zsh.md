@@ -6,8 +6,25 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 
 ## Shorcut keys (.zshrc)
+# Enable vi mode for better keybinding support
+bindkey -v
+
+function zle-keymap-select {
+  if [[ $KEYMAP == vicmd ]]; then
+    echo -ne '\e[2 q'   # block-outline (normal mode)
+  else
+    echo -ne '\e[6 q'   # bar cursor (insert mode)
+  fi
+}
+zle -N zle-keymap-select
+
+# Ensure correct cursor on startup
+echo -ne '\e[6 q'
+
+# Old bindkey
 bindkey "^[z" backward-kill-word
 bindkey "^z" backward-kill-word
+bindkey "^[d" autosuggest-accept
 
 ## Color
 Directory:  
