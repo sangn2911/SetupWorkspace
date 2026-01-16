@@ -50,9 +50,9 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "shift+alt+left",
+        "key": "shift+alt+h",
         "command": "workbench.action.navigateBack",
-        "when": "canNavigateBack"
+        "when": "editorFocus && canNavigateBack"
     },
     {
         "key": "ctrl+alt+-",
@@ -60,9 +60,9 @@
         "when": "canNavigateBack"
     },
     {
-        "key": "shift+alt+right",
+        "key": "shift+alt+l",
         "command": "workbench.action.navigateForward",
-        "when": "canNavigateForward"
+        "when": "editorFocus && canNavigateForward"
     },
     {
         "key": "ctrl+shift+-",
@@ -247,92 +247,6 @@
         "command": "-editor.action.insertCursorBelow",
         "when": "editorTextFocus"
     },
-    // VIM shortcut keys
-    {
-        "key": "ctrl+c",
-        "command": "extension.vim_ctrl+c",
-        "when": "editorTextFocus && vim.mode == 'Insert'"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "editor.action.clipboardCopyAction",
-        "when": "editorTextFocus && vim.mode == 'Visual'"
-    },
-    {
-        "key": "tab",
-        "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.mode == 'Visual'"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "editor.action.clipboardCopyAction",
-        "when": "editorTextFocus && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+v",
-        "command": "editor.action.clipboardPasteAction",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+z",
-        "command": "undo",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+y",
-        "command": "redo",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "u",
-        "command": "undo",
-        "when": "editorTextFocus && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+r",
-        "command": "redo",
-        "when": "editorTextFocus && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+x",
-        "command": "-extension.vim_ctrl+x",
-        "when": "editorTextFocus && vim.mode == 'Insert'"
-    },
-    {
-        "key": "ctrl+x",
-        "command": "editor.action.clipboardCutAction",
-        "when": "editorTextFocus && vim.mode == 'Insert'"
-    },
-    {
-        "key": "ctrl+x",
-        "command": "editor.action.clipboardCutAction",
-        "when": "editorTextFocus && vim.mode == 'Visual'"
-    },
-    {
-        "key": "ctrl+x",
-        "command": "editor.action.clipboardCutAction",
-        "when": "editorTextFocus && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+d",
-        "command": "-extension.vim_ctrl+d",
-        "when": "editorTextFocus && vim.active && vim.use<C-d> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+u",
-        "command": "-extension.vim_ctrl+u",
-        "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+f",
-        "command": "-extension.vim_ctrl+f",
-        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-extension.vim_ctrl+b",
-        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
-    },
     {
         "key": "f4",
         "command": "-references-view.next",
@@ -369,15 +283,101 @@
         "command": "-workbench.action.terminal.killEditor",
         "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
     },
+    // VIM shortcut keys
+    {
+        "key": "shift+alt+j",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+alt+k",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "tab",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "tab",
+        "command": "removeSecondaryCursors",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+z",
+        "command": "undo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "redo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "-extension.vim_ctrl+x",
+        "when": "editorTextFocus && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.clipboardCutAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "u",
+        "command": "undo",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "redo",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-extension.vim_ctrl+d",
+        "when": "editorTextFocus && vim.active && vim.use<C-d> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "-extension.vim_ctrl+f",
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    },
     {
         "key": "alt+j",
         "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && vim.mode == 'Normal'"
+        "when": "editorTextFocus && !editorReadonly && vim.mode != 'Insert'"
     },
     {
         "key": "alt+k",
         "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && vim.mode == 'Normal'"
+        "when": "editorTextFocus && !editorReadonly && vim.mode != 'Insert'"
     },
     {
         "key": "ctrl+shift+l",
@@ -393,5 +393,60 @@
         "key": "ctrl+shift+k",
         "command": "editor.action.copyLinesUpAction",
         "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "editor.action.selectAll",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "-references-view.showCallHierarchy",
+        "when": "editorHasCallHierarchyProvider"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "-editor.showCallHierarchy",
+        "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "-editor.showIncomingCalls",
+        "when": "callHierarchyVisible && callHierarchyDirection == 'outgoingCalls'"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "-editor.showOutgoingCalls",
+        "when": "callHierarchyVisible && callHierarchyDirection == 'incomingCalls'"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "-editor.showSubtypes",
+        "when": "typeHierarchyVisible && typeHierarchyDirection == 'supertypes'"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "-editor.showSupertypes",
+        "when": "typeHierarchyVisible && typeHierarchyDirection == 'subtypes'"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
     }
 ]
