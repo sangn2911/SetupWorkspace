@@ -1,6 +1,9 @@
 {
     // -- User settings
     // Disable features
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
     "chat.disableAIFeatures": true,
     "chat.useAgentsMdFile": false,
     "chat.agent.enabled": false,
