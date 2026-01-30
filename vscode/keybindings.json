@@ -52,7 +52,7 @@
     {
         "key": "shift+alt+h",
         "command": "workbench.action.navigateBack",
-        "when": "editorFocus && canNavigateBack"
+        "when": "editorTextFocus && canNavigateBack"
     },
     {
         "key": "ctrl+alt+-",
@@ -62,7 +62,7 @@
     {
         "key": "shift+alt+l",
         "command": "workbench.action.navigateForward",
-        "when": "editorFocus && canNavigateForward"
+        "when": "editorTextFocus && canNavigateForward"
     },
     {
         "key": "ctrl+shift+-",
@@ -124,18 +124,13 @@
         "command": "-workbench.action.quit"
     },
     {
-        "key": "ctrl+q",
-        "command": "cursorHome",
+        "key": "ctrl+e",
+        "command": "cursorEnd",
         "when": "textInputFocus"
     },
     {
         "key": "home",
         "command": "-cursorHome",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "cursorEnd",
         "when": "textInputFocus"
     },
     {
@@ -296,11 +291,6 @@
     },
     {
         "key": "ctrl+c",
-        "command": "extension.vim_ctrl+c",
-        "when": "editorTextFocus && vim.mode == 'Insert'"
-    },
-    {
-        "key": "ctrl+c",
         "command": "editor.action.clipboardCopyAction",
         "when": "editorTextFocus && vim.mode != 'Insert'"
     },
@@ -382,7 +372,7 @@
     {
         "key": "ctrl+shift+l",
         "command": "editor.action.selectHighlights",
-        "when": "editorFocus && editorTextFocus && vim.mode == 'Visual'"
+        "when": "editorTextFocus && editorTextFocus && vim.mode == 'Visual'"
     },
     {
         "key": "ctrl+shift+j",
@@ -401,6 +391,16 @@
     },
     {
         "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    {
+        "key": "alt+k",
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetVisible && editorTextFocus"
     },
@@ -448,5 +448,84 @@
         "key": "ctrl+k",
         "command": "workbench.action.quickOpenSelectPrevious",
         "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "shift+k",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+j",
+        "command": "editor.action.triggerParameterHints",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-extension.vim_navigateCtrlL",
+        "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "aichat.newchataction"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-aichat.newchataction"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "-extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+    },
+    {
+        "key": "alt+l",
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Insert' && !inDebugRepl"
+    },
+    {
+        "key": "alt+h",
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Insert' && !inDebugRepl"
+    },
+    {
+        "key": "alt+s",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "extension.vim_ctrl+c",
+                "workbench.action.files.save"
+            ]
+        },
+        "when": "editorTextFocus && vim.active"
+    },
+    {
+        "key": "alt+d",
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Insert' && !inDebugRepl"
+    },
+    {
+        "key": "alt+h",
+        "command": "-editor.action.accessibilityHelpOpenHelpLink",
+        "when": "accessibilityHelpIsShown"
     }
 ]
