@@ -1,0 +1,64 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-.": "editor::ShowCompletions",
+      "alt-shift-f": "editor::Format",
+      "alt-s": "workspace::Save",
+      "ctrl-s": "workspace::Save",
+      "ctrl-c": "editor::Copy",
+      "ctrl-x": "editor::Cut",
+      "ctrl-v": "editor::Paste",
+      "ctrl-shift-k": "editor::DuplicateLineUp",
+      "ctrl-shift-j": "editor::DuplicateLineDown",
+      "ctrl-shift-up": "editor::DuplicateLineUp",
+      "ctrl-shift-down": "editor::DuplicateLineDown",
+      "ctrl-shift-i": null,
+      "ctrl-a": "editor::SelectAll",
+      // Vim reset to normal mode
+      "alt-h": "vim::SwitchToNormalMode",
+      "alt-l": "vim::SwitchToNormalMode",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "alt-k": "editor::MoveLineUp",
+      "alt-j": "editor::MoveLineDown",
+    },
+  },
+  {
+    "bindings": {
+      // Navigate project files
+      "alt-j": "menu::SelectNext",
+      "alt-k": "menu::SelectPrevious",
+    },
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      // Navigate context menu (suggestions/autocomplete)
+      "alt-j": "editor::ContextMenuNext",
+      "alt-k": "editor::ContextMenuPrevious",
+    },
+  },
+]

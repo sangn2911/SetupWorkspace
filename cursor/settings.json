@@ -1,0 +1,117 @@
+// User settings
+{
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.fontSize": 15,
+    "editor.fontFamily": "'MesloLGS NF'",
+    "debug.console.fontFamily": "JetBrainsMono-ExtraLight",
+    "debug.console.fontSize": 15,
+    "markdown.preview.fontFamily": "-apple-system, JetBrainsMono-ExtraLight, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+    "editor.inlineSuggest.fontFamily": "JetBrainsMono-ExtraLight",
+    "terminal.integrated.fontFamily": "JetBrainsMono-ExtraLight",
+    "extensions.autoCheckUpdates": false,
+    "telemetry.feedback.enabled": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.folders.theme": "classic",
+    "material-icon-theme.folders.color": "#ff7043",
+    "git.confirmSync": false,
+    // Customize settings
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Monokai",
+    "editor.lineNumbers": "relative",
+    "editor.links": false,
+    "terminal.integrated.enablePersistentSessions": false,
+    "files.associations": {
+        ".env.example": "properties",
+        ".env": "properties"
+    },
+    "workbench.activityBar.orientation": "vertical",
+    // Vim settings
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.normal": "block-outline",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.replace": "line",
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "c"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "c"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "x"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "c"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "c"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "x"
+            ]
+        }
+    ],
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "c"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "c"
+            ]
+        },
+        {
+            "before": [
+                "x"
+            ],
+            "after": [
+                "\"",
+                "_",
+                "x"
+            ]
+        }
+    ],
+    "editor.stickyScroll.maxLineCount": 2,
+    "kafka.clusters": [
+        {
+            "name": "local",
+            "type": "kafka",
+            "brokers": [
+                "localhost:9092"
+            ],
+            "securityProtocol": "PLAINTEXT"
+        }
+    ],
+    "workbench.editor.tabSizingFixedMaxWidth": 150,
+    "workbench.editor.tabSizingFixedMinWidth": 100,
+    "workbench.editor.tabSizing": "fixed",
+    "window.controlsStyle": "custom",
+    "window.dialogStyle": "custom",
+    "editor.wordWrap": "on"
+}
