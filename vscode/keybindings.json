@@ -10,10 +10,6 @@
         "command": "workbench.action.quickOpen"
     },
     {
-        "key": "ctrl+e",
-        "command": "-workbench.action.quickOpen"
-    },
-    {
         "key": "ctrl+shift+pagedown",
         "command": "-workbench.action.moveEditorRightInGroup"
     },
@@ -28,6 +24,21 @@
     {
         "key": "alt+right",
         "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "ctrl+alt+s",
+        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+        "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
     },
     // ----- Navigation (back / forward) -----
     {
@@ -96,16 +107,10 @@
         "command": "-workbench.action.terminal.sizeToContentWidth",
         "when": "terminalFocus && terminalHasBeenCreated && terminalIsOpen || terminalFocus && terminalIsOpen && terminalProcessSupported"
     },
-    {
-        "key": "ctrl+w",
-        "command": "-workbench.action.terminal.killEditor",
-        "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
-    },
     // ----- Text input (cursor position in inputs) -----
     {
-        "key": "ctrl+q",
-        "command": "cursorHome",
-        "when": "textInputFocus"
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
     },
     {
         "key": "ctrl+e",
@@ -114,23 +119,13 @@
     },
     {
         "key": "alt+q",
-        "command": "vim.remap",
-        "args": {
-            "after": [
-                "^"
-            ]
-        },
-        "when": "editorTextFocus && vim.active && !inDebugRepl"
+        "command": "extension.vim_home",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
     },
     {
         "key": "alt+e",
-        "command": "vim.remap",
-        "args": {
-            "after": [
-                "$"
-            ]
-        },
-        "when": "editorTextFocus && vim.active && !inDebugRepl"
+        "command": "extension.vim_end",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
     },
     {
         "key": "home",
@@ -153,23 +148,8 @@
         "when": "textInputFocus"
     },
     {
-        "key": "ctrl+shift+e",
-        "command": "cursorEndSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+e",
-        "command": "-workbench.view.explorer",
-        "when": "viewContainer.workbench.view.explorer.enabled"
-    },
-    {
         "key": "shift+end",
         "command": "-cursorEndSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+q",
-        "command": "cursorHomeSelect",
         "when": "textInputFocus"
     },
     {
@@ -194,11 +174,6 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "shift+alt+down",
-        "command": "-editor.action.insertCursorBelow",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "shift+alt+up",
         "command": "editor.action.insertCursorAbove",
         "when": "editorTextFocus"
@@ -206,6 +181,11 @@
     {
         "key": "ctrl+alt+up",
         "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+down",
+        "command": "-editor.action.insertCursorBelow",
         "when": "editorTextFocus"
     },
     {
@@ -383,6 +363,15 @@
         "command": "-composer.sendToAgent",
         "when": "editorHasPromptBar && editorPromptBarFocused"
     },
+    {
+        "key": "ctrl+l",
+        "command": "-extension.vim_navigateCtrlL",
+        "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-composer.startComposerPrompt"
+    },
     // ----- Vim: Multi-cursor (shift+alt+j/k) -----
     {
         "key": "shift+alt+j",
@@ -394,19 +383,14 @@
         "command": "editor.action.insertCursorAbove",
         "when": "editorTextFocus && vim.mode != 'Insert'"
     },
-    {
-        "key": "alt+u",
-        "command": "cursorUndo",
-        "when": "textInputFocus"
-    },
-    // ----- Vim: Mode (tab = escape / remove cursors) -----
+    // ----- Vim: Mode (tab / ctrl+[ = escape / remove cursors) -----
     {
         "key": "tab",
         "command": "extension.vim_escape",
         "when": "editorTextFocus && vim.mode == 'Visual'"
     },
     {
-        "key": "tab",
+        "key": "ctrl+[",
         "command": "removeSecondaryCursors",
         "when": "editorTextFocus && vim.mode == 'Normal'"
     },
@@ -457,16 +441,36 @@
         "command": "redo",
         "when": "editorTextFocus && vim.mode == 'Normal'"
     },
-    // ----- Vim: Unbind default movement -----
+    // ----- Vim: Unbind / rebind default movement -----
     {
         "key": "ctrl+d",
-        "command": "-extension.vim_ctrl+d",
-        "when": "editorTextFocus && vim.active && vim.use<C-d> && !inDebugRepl"
+        "command": "extension.vim_ctrl+d",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal' && vim.use<C-d> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus && vim.active && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
     },
     {
         "key": "ctrl+u",
         "command": "-extension.vim_ctrl+u",
         "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "cursorUndo",
+        "when": "textInputFocus && vim.active && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
     },
     {
         "key": "ctrl+f",
@@ -479,19 +483,9 @@
         "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
     },
     {
-        "key": "ctrl+l",
-        "command": "-extension.vim_navigateCtrlL",
-        "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+q",
-        "command": "-extension.vim_winCtrlQ",
-        "when": "editorTextFocus && vim.active && vim.use<C-q> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "-extension.vim_ctrl+a",
-        "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
+        "key": "ctrl+h",
+        "command": "-extension.vim_ctrl+h",
+        "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
     },
     // ----- Vim: Move lines (alt+j/k) -----
     {
@@ -504,7 +498,7 @@
         "command": "editor.action.moveLinesUpAction",
         "when": "editorTextFocus && !editorReadonly && vim.mode != 'Insert'"
     },
-    // ----- Vim: Copy lines (ctrl+shift+j/k) -----
+    // ----- Vim: Copy lines / Select highlights (ctrl+shift+j/k/l) -----
     {
         "key": "ctrl+shift+l",
         "command": "editor.action.selectHighlights",
@@ -551,24 +545,14 @@
     {
         "key": "shift+k",
         "command": "editor.action.showHover",
-        "when": "editorTextFocus && vim.mode != 'Insert'"
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
     },
     {
         "key": "shift+j",
         "command": "editor.action.triggerParameterHints",
         "when": "editorTextFocus && vim.mode != 'Insert'"
     },
-    // ----- Vim: Escape (alt+h, alt+l, alt+d) -----
-    {
-        "key": "alt+l",
-        "command": "extension.vim_ctrl+[",
-        "when": "editorTextFocus && vim.active && vim.mode == 'Insert' && !inDebugRepl"
-    },
-    {
-        "command": "extension.vim_ctrl+[",
-        "key": "alt+h",
-        "when": "editorTextFocus && vim.active && vim.mode == 'Insert' && !inDebugRepl"
-    },
+    // ----- Vim: Escape (alt+d, alt+h, alt+l, shift+alt+e) -----
     {
         "key": "alt+d",
         "command": "extension.vim_ctrl+[",
@@ -576,8 +560,38 @@
     },
     {
         "key": "alt+h",
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    },
+    {
+        "key": "alt+h",
         "command": "-editor.action.accessibilityHelpOpenHelpLink",
         "when": "accessibilityHelpIsShown"
+    },
+    {
+        "key": "alt+h",
+        "command": "-testing.toggleTestingPeekHistory",
+        "when": "testing.isPeekVisible"
+    },
+    {
+        "key": "alt+h",
+        "command": "-editor.action.inlineDiffs.previousDiffFile",
+        "when": "editorTextFocus && inlineDiffs.hasInlineDiffsInAnyEditor"
+    },
+    {
+        "key": "alt+l",
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    },
+    {
+        "key": "alt+l",
+        "command": "editor.action.inlineSuggest.acceptNextWord",
+        "when": "cppSuggestion && !editorReadonly || inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+e",
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
     },
     // ----- Vim: Save (alt+s) -----
     {
@@ -590,5 +604,47 @@
             ]
         },
         "when": "editorTextFocus && vim.active"
+    },
+    // ----- Editor: Window management (ctrl+w) -----
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.terminal.killEditor",
+        "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+w e",
+        "command": "workbench.action.closeOtherEditors"
+    },
+    {
+        "key": "ctrl+w q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w g",
+        "command": "git-graph.view"
+    },
+    // ----- Extensions (unbind) -----
+    {
+        "key": "shift+alt+q",
+        "command": "-vscode-pokemon.spawn-random-pokemon"
+    },
+    {
+        "key": "shift+alt+w",
+        "command": "-vscode-pokemon.spawn-pokemon"
+    },
+    // ----- Misc -----
+    {
+        "key": "shift+alt+2",
+        "command": "merge-conflict.next",
+        "when": "textCompareEditorVisible"
+    },
+    {
+        "key": "shift+alt+3",
+        "command": "workbench.action.compareEditor.nextChange",
+        "when": "textCompareEditorVisible"
     }
 ]
