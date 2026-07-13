@@ -1,0 +1,221 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    // ----- Vim Shortcuts (Start here) -----
+    {
+        "key": "shift+alt+v",
+        "command": "toggleVim"
+    },
+    // ----- Vim Editor Shortcuts -----
+    {
+        "key": "shift+alt+j",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+alt+k",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "tab",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "removeSecondaryCursors",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+c", // Turn off to use for VSCode copy
+        "command": "-extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+x", // Turn off to use for VSCode cut
+        "command": "-extension.vim_ctrl+x",
+        "when": "editorTextFocus && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.clipboardCutAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+z",
+        "command": "undo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+z",
+        "command": "redo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "u",
+        "command": "undo",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "redo",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "extension.vim_ctrl+d",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal' && vim.use<C-d> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+d", // WARN: Cannot scroll down half page in Visual mode
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus && vim.active && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+u", // WARN: Cannot scroll up half page in Visual mode
+        "command": "-extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "cursorUndo",
+        "when": "textInputFocus && vim.active && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+f", // WARN: Turn off scroll down full page
+        "command": "-extension.vim_ctrl+f",
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+b", // WARN: Turn off scroll up full page
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+h", // WARN: Turn off delete word left in Insert mode
+        "command": "-extension.vim_ctrl+h",
+        "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode != 'Insert'"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "editor.action.selectHighlights",
+        "when": "editorTextFocus && editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "alt+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    // {
+    //     "key": "ctrl+j",
+    //     "command": "selectNextSuggestion",
+    //     "when": "editorTextFocus && vim.active && vim.mode == 'Normal' && suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "ctrl+k",
+    //     "command": "selectPrevSuggestion",
+    //     "when": "suggestWidgetVisible && editorTextFocus"
+    // },
+    {
+        "key": "shift+k",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+j",
+        "command": "editor.action.triggerParameterHints",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "alt+d", // Use same as zsh-vi-mode
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Insert' && !inDebugRepl"
+    },
+    {
+        "key": "alt+h", // Use same as zsh-vi-mode
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    },
+    {
+        "key": "alt+l", // Use same as zsh-vi-mode
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    }, 
+    {
+        "key": "alt+s",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "extension.vim_ctrl+c",
+                "workbench.action.files.save"
+            ]
+        },
+        "when": "editorTextFocus && vim.active"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+j", // Insert new line (same as enter) in Insert mode
+        "command": "extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.mode == 'Insert' && vim.use<C-j> && !inDebugRepl"
+    },
+    // ----- Vim Conflict Shortcuts (Disabled) -----
+    {
+        "key": "ctrl+l",
+        "command": "-extension.vim_navigateCtrlL",
+        "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.selectAll",
+        "when": "vim.mode == 'active' && vim.mode == 'Normal'"
+    },
+]

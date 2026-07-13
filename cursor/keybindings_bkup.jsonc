@@ -26,11 +26,6 @@
         "command": "workbench.action.increaseViewSize"
     },
     {
-        "key": "ctrl+alt+s",
-        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
-        "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
-    },
-    {
         "key": "ctrl+shift+e",
         "command": "-workbench.view.explorer",
         "when": "viewContainer.workbench.view.explorer.enabled"
@@ -113,11 +108,6 @@
         "command": "-workbench.action.quickOpen"
     },
     {
-        "key": "ctrl+e",
-        "command": "cursorEnd",
-        "when": "textInputFocus"
-    },
-    {
         "key": "alt+q",
         "command": "extension.vim_home",
         "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
@@ -126,36 +116,6 @@
         "key": "alt+e",
         "command": "extension.vim_end",
         "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-    },
-    {
-        "key": "home",
-        "command": "-cursorHome",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "end",
-        "command": "-cursorEnd",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+end",
-        "command": "cursorBottomSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "ctrl+shift+end",
-        "command": "-cursorBottomSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+end",
-        "command": "-cursorEndSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+home",
-        "command": "-cursorHomeSelect",
-        "when": "textInputFocus"
     },
     // ----- Editor: Multi-cursor / Insert cursor -----
     {
@@ -283,12 +243,12 @@
     },
     // ----- Editor: Go to definition / References -----
     {
-        "key": "f12",
+        "key": "f13",
         "command": "editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
     {
-        "key": "f4",
+        "key": "f5",
         "command": "-references-view.next",
         "when": "reference-list.hasResult && references-view.canNavigate"
     },
@@ -427,11 +387,6 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+y",
-        "command": "redo",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "u",
         "command": "undo",
         "when": "editorTextFocus && vim.mode == 'Normal'"
@@ -518,7 +473,7 @@
     {
         "key": "ctrl+j",
         "command": "selectNextSuggestion",
-        "when": "suggestWidgetVisible && editorTextFocus"
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal' && suggestWidgetVisible"
     },
     {
         "key": "ctrl+k",
@@ -534,12 +489,6 @@
         "key": "alt+k",
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetVisible && editorTextFocus"
-    },
-    // ----- Vim: Select all -----
-    {
-        "key": "ctrl+a",
-        "command": "editor.action.selectAll",
-        "when": "editorTextFocus && vim.mode != 'Insert'"
     },
     // ----- Vim: Hover & parameter hints -----
     {
@@ -648,12 +597,133 @@
     },
     // ----- Misc -----
     {
-        "key": "shift+alt+2",
+        "key": "shift+alt+3",
         "command": "merge-conflict.next"
     },
     {
-        "key": "shift+alt+3",
+        "key": "shift+alt+4",
         "command": "workbench.action.compareEditor.nextChange",
         "when": "textCompareEditorVisible"
-    }
+    },
+    {
+        "key": "ctrl+space",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "vim.active && vim.mode == 'Normal' && editorTextFocus && !editorHasSelection"
+    },
+    {
+        "key": "ctrl+m a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "alt+-",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+=",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.mode == 'Insert' && vim.use<C-j> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "workbench.action.togglePanel",
+        "when": "vim.active && vim.mode == 'Normal' && !isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "-composer.newAgentChat"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.selectAll",
+        "when": "vim.mode == 'active' && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+alt+space",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-cursor.toggleAgentWindowIDEUnification",
+        "when": "!isGlass && workbenchState != 'empty'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-composer.toggleChatAsEditor",
+        "when": "composerFocused && !editorTextFocus"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "-redo"
+    },
+    
+    // Stop tab from applying suggestion in vim Insert mode
+    // {
+    //     "key": "shift+alt+l",
+    //     "command": "editor.action.inlineSuggest.commit",
+    //     "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "shift+alt+l",
+    //     "command": "editor.action.inlineSuggest.commit",
+    //     "when": "inInlineEditsPreviewEditor"
+    // },
+    // {
+    //     "key": "shift+alt+l",
+    //     "command": "editor.action.acceptCursorTabSuggestion",
+    //     "when": "cpp.shouldAcceptTab"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-editor.action.inlineSuggest.commit",
+    //     "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-editor.action.inlineSuggest.commit",
+    //     "when": "inInlineEditsPreviewEditor"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-editor.action.acceptCursorTabSuggestion",
+    //     "when": "cpp.shouldAcceptTab"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "editor.action.inlineSuggest.commit",
+    //     "when": "vim.active && vim.mode == 'Normal' && inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "editor.action.inlineSuggest.commit",
+    //     "when": "vim.active && vim.mode == 'Normal' && inInlineEditsPreviewEditor"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "editor.action.acceptCursorTabSuggestion",
+    //     "when": "vim.active && vim.mode == 'Normal' && cpp.shouldAcceptTab"
+    // }
 ]

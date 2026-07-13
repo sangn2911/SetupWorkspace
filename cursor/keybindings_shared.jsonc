@@ -1,0 +1,359 @@
+[
+    // ----- General / Workbench -----
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+m a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    // ----- VSCode Navigation Shortcuts -----
+    {
+        "key": "ctrl+e", // Move to ctrl+p
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+alt+-", // Move to shift+alt+h
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "workbench.action.navigateBack",
+        "when": "editorTextFocus && canNavigateBack"
+    },
+    {
+        "key": "ctrl+shift+-", // Move to shift+alt+l
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "workbench.action.navigateForward",
+        "when": "editorTextFocus && canNavigateForward"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateBack
+        "command": "-references-view.showCallHierarchy",
+        "when": "editorHasCallHierarchyProvider"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateForward
+        "command": "-editor.showCallHierarchy",
+        "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateIncomingCalls
+        "command": "-editor.showIncomingCalls",
+        "when": "callHierarchyVisible && callHierarchyDirection == 'outgoingCalls'"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateOutgoingCalls
+        "command": "-editor.showOutgoingCalls",
+        "when": "callHierarchyVisible && callHierarchyDirection == 'incomingCalls'"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateSubtypes
+        "command": "-editor.showSubtypes",
+        "when": "typeHierarchyVisible && typeHierarchyDirection == 'supertypes'"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateSupertypes
+        "command": "-editor.showSupertypes",
+        "when": "typeHierarchyVisible && typeHierarchyDirection == 'subtypes'"
+    },
+    // ----- VSCode Layout Shortcuts -----
+    {
+        "key": "alt+left",
+        "command": "workbench.action.decreaseViewSize"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "ctrl+alt+space", // Hide sidebar when in Markdown files (as ctrl+b used for bold in Markdown)
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    // ----- VSCode Terminal Shortcuts -----
+    {
+        "key": "ctrl+shift+c",
+        "command": "workbench.action.terminal.openNativeConsole",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+c", // Turn off to use for copy in terminal
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+down", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.selectToNextCommand",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+down", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.scrollDown",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "ctrl+shift+up", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.selectToPreviousCommand",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+up", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.scrollUp",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-notebook.cell.pasteAbove",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    // ----- VSCode Editor Shortcuts -----
+    {
+        "key": "ctrl+shift+alt+down", // Move to ctrl+shift+down
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+up", // Move to ctrl+shift+up
+        "command": "-editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+down", // Move to shift+alt+down
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+up", // Move to shift+alt+up
+        "command": "-editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+z", // Turn off to use for toggle line wrapping
+        "command": "-workbench.action.terminal.sizeToContentWidth",
+        "when": "terminalFocus && terminalHasBeenCreated && terminalIsOpen || terminalFocus && terminalIsOpen && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+down", // Move to shift+alt+down
+        "command": "-editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+down", // WARN: should practice visual block in Vim
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+up", // Move to shift+alt+up
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+up", // WARN: should practice visual block in Vim
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    }, 
+    {
+        "key": "ctrl+shift+up",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+right", // Move to shift+alt+right
+        "command": "-editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+right",
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+left", // Move to shift+alt+left
+        "command": "-editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+left",
+        "command": "editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+i", // Move to shift+alt+f
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "vim.active && vim.mode == 'Normal' && editorTextFocus && !editorHasSelection"
+    },
+    // ----- VSCode Search Shortcuts -----
+    {
+        "key": "shift+alt+f", // Turn off to use for formatting document
+        "command": "-filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
+    },
+    {
+        "key": "shift+alt+f", // Turn off to use for formatting document
+        "command": "-search.action.restrictSearchToFolder",
+        "when": "folderMatchWithResourceFocus && searchViewletVisible"
+    }, 
+    // ----- Cursor AI Shortcuts -----
+    {
+        "key": "ctrl+l",
+        "command": "-aichat.newchataction"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-composer.startComposerPrompt"
+    }, 
+    {
+        "key": "ctrl+alt+l",
+        "command": "aichat.newchataction"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+    {
+        "key": "alt+l",
+        "command": "editor.action.inlineSuggest.acceptNextWord",
+        "when": "cppSuggestion && !editorReadonly || inlineSuggestionVisible && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "-composer.newAgentChat"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-cursor.toggleAgentWindowIDEUnification",
+        "when": "!isGlass && workbenchState != 'empty'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-composer.toggleChatAsEditor",
+        "when": "composerFocused && !editorTextFocus"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "-redo"
+    },
+    // ----- VSCode Window Shortcuts -----
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.terminal.killEditor",
+        "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+w e",
+        "command": "workbench.action.closeOtherEditors"
+    },
+    {
+        "key": "ctrl+w q",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+m o",
+        "command": "workbench.action.copyEditorToNewWindow",
+        "when": "editorFocus && findWidgetVisible || editorFocus && searchViewletVisible && !findWidgetVisible"
+    },
+    {
+        "key": "ctrl+m o",
+        "command": "-workbench.action.copyEditorToNewWindow",
+        "when": "activeEditor"
+    }, 
+    {
+        "key": "alt+-",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+=",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "workbench.action.togglePanel",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    // ----- VSCode Git Shortcuts -----
+    {
+        "key": "ctrl+w g",
+        "command": "git-graph.view"
+    },
+    {
+        "key": "shift+alt+3",
+        "command": "merge-conflict.next"
+    },
+    {
+        "key": "shift+alt+4",
+        "command": "workbench.action.compareEditor.nextChange",
+        "when": "textCompareEditorVisible"
+    },
+    // ----- VSCode Conflict Shortcuts (Disabled) -----
+    {
+        "key": "alt+h", // Turn off as never need accessibilityHelpOpenHelpLink
+        "command": "-editor.action.accessibilityHelpOpenHelpLink",
+        "when": "accessibilityHelpIsShown"
+    },
+    {
+        "key": "alt+h", // Turn off as never need testing.isPeekVisible
+        "command": "-testing.toggleTestingPeekHistory",
+        "when": "testing.isPeekVisible"
+    },
+    {
+        "key": "alt+h", // Turn off as never need inlineDiffs.hasInlineDiffsInAnyEditor
+        "command": "-editor.action.inlineDiffs.previousDiffFile",
+        "when": "editorTextFocus && inlineDiffs.hasInlineDiffsInAnyEditor"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    // ----- VSCode Extension Conflict Shortcuts (Disabled) -----
+    {
+        "key": "shift+alt+q",
+        "command": "-vscode-pokemon.spawn-random-pokemon"
+    },
+    {
+        "key": "shift+alt+w",
+        "command": "-vscode-pokemon.spawn-pokemon"
+    }
+]
