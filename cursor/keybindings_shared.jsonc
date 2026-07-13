@@ -73,6 +73,21 @@
         "command": "-editor.showSupertypes",
         "when": "typeHierarchyVisible && typeHierarchyDirection == 'subtypes'"
     },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.acceptSelectedQuickOpenItem",
+        "when": "inQuickOpen"
+    },
     // ----- VSCode Layout Shortcuts -----
     {
         "key": "alt+left",
@@ -173,7 +188,7 @@
         "key": "ctrl+shift+down",
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
-    }, 
+    },
     {
         "key": "ctrl+shift+up",
         "command": "editor.action.copyLinesUpAction",
@@ -224,7 +239,7 @@
         "key": "shift+alt+f", // Turn off to use for formatting document
         "command": "-search.action.restrictSearchToFolder",
         "when": "folderMatchWithResourceFocus && searchViewletVisible"
-    }, 
+    },
     // ----- Cursor AI Shortcuts -----
     {
         "key": "ctrl+l",
@@ -238,7 +253,7 @@
     {
         "key": "ctrl+i",
         "command": "-composer.startComposerPrompt"
-    }, 
+    },
     {
         "key": "ctrl+alt+l",
         "command": "aichat.newchataction"
@@ -298,7 +313,7 @@
         "key": "ctrl+m o",
         "command": "-workbench.action.copyEditorToNewWindow",
         "when": "activeEditor"
-    }, 
+    },
     {
         "key": "alt+-",
         "command": "workbench.action.previousEditor"
