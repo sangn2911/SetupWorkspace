@@ -224,11 +224,6 @@
         "command": "editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
     },
-    {
-        "key": "ctrl+space",
-        "command": "editor.action.inlineSuggest.trigger",
-        "when": "vim.active && vim.mode == 'Normal' && editorTextFocus && !editorHasSelection"
-    },
     // ----- VSCode Search Shortcuts -----
     {
         "key": "shift+alt+f", // Turn off to use for formatting document

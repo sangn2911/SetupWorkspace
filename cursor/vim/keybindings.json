@@ -185,7 +185,7 @@
         "key": "alt+l", // Use same as zsh-vi-mode
         "command": "extension.vim_ctrl+[",
         "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
-    }, 
+    },
     {
         "key": "alt+s",
         "command": "runCommands",
@@ -207,6 +207,27 @@
         "command": "extension.vim_ctrl+j",
         "when": "editorTextFocus && vim.mode == 'Insert' && vim.use<C-j> && !inDebugRepl"
     },
+    {
+        "key": "ctrl+space",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "vim.active && vim.mode == 'Normal' && editorTextFocus && !editorHasSelection"
+    },
+    // ----- Vim Explorer Shortcuts (nvim-tree style) -----
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "z m",
+        "command": "workbench.files.action.collapseExplorerFolders",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
     // ----- Vim Conflict Shortcuts (Disabled) -----
     {
         "key": "ctrl+l",
@@ -217,5 +238,5 @@
         "key": "ctrl+a",
         "command": "-editor.action.selectAll",
         "when": "vim.mode == 'active' && vim.mode == 'Normal'"
-    },
+    }
 ]
