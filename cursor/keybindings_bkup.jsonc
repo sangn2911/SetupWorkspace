@@ -678,8 +678,7 @@
     {
         "key": "ctrl+y",
         "command": "-redo"
-    },
-    
+    }
     // Stop tab from applying suggestion in vim Insert mode
     // {
     //     "key": "shift+alt+l",
