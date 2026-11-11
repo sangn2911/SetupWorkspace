@@ -5,6 +5,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 
+-- Netrw replaces buffer options; nu/rnu here so Explore shows relative numbers.
+vim.g.netrw_bufsettings = "noma nomod nu rnu nowrap ro nobl"
+
 vim.cmd.filetype("plugin", "indent", "on")
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2

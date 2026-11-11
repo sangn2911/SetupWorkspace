@@ -1,0 +1,173 @@
+---
+alwaysApply: true
+---
+# Code Style Rules
+
+These rules make functions easy to read for a new team member: every function
+says *why* it exists, and each body block states its *goal* and *why*.
+
+## 0. Clarity (applies to every comment)
+
+Every comment — function-level or block-level — must state the purpose clearly.
+
+- Be concrete, name the actual target. Use the real subject (e.g. "product
+  display", "deal_skus") instead of vague words like "anywhere", "anything",
+  "somewhere", "stuff", "handle", or "process".
+- The reader should grasp the purpose from the comment alone, without reading the
+  code for context.
+- Readable over compressed. A new teammate should understand the comment on the
+  first read. Do not pack several ideas into a jargon phrase (e.g.
+  "min-priority-per-key set"). Write a full sentence that names the subject, the
+  rule, and the outcome.
+- Short is not the goal; clear is. Prefer one extra line over a comment the
+  reader has to decode.
+
+## 1. Function comment (the "why")
+
+Every function has a comment directly above it that explains the business logic.
+
+- The first line is a summary of *why* the function exists / what it
+  guarantees — not a line-by-line description of *how*. Use two sentences when
+  one would be cryptic.
+- If edge cases or multiple guarantees need explaining, list them as bullets
+  (`// - Verify ...`) so the idea is easy to scan. Prefer a list over a
+  paragraph.
+- Each bullet is a full, self-contained sentence (subject + rule + outcome),
+  not a compressed fragment. Follow the clarity rule in section 0.
+- Do not restate the signature (parameter/return types are already visible).
+- Start with the function name (Go doc-comment convention).
+
+Good (preferred one-liner):
+
+```go
+// verifyBannerNotStored checks no product display is associated with a banner-only landing page.
+func (l *landingPageUsecase) verifyBannerNotStored(...) { ... }
+```
+
+Good (summary + scannable list when there are several checks):
+
+```go
+// validateLandingPage validates one landing page. It verifies:
+// - data is stored correctly according to the landing page template
+// - stored deal_skus match the skus resolved from deal_ids
+func (l *landingPageUsecase) validateLandingPage(...) { ... }
+```
+
+Bad (how — narrates the implementation):
+
+```go
+// This function takes a ctx, a reporter and a landingPage and calls the repository
+// then loops over the result and appends to storedSKUs and adds an issue.
+func (l *landingPageUsecase) verifyBannerNotStored(...) { ... }
+```
+
+Bad (compressed — a new teammate has to decode the jargon):
+
+```go
+// - default_sku and deal_default_sku both carry the same min-priority-per-key set
+```
+
+Good (same idea, readable):
+
+```go
+// - For each pin key, keep the smallest priority among all children (highest precedence).
+// - Both default_sku and deal_default_sku get this same list so listing-page and flash-deal sort share one pin order.
+```
+
+## 2. Function body: labelled logical blocks
+
+Split the body into logical blocks separated by a single blank line. Each block
+does one conceptual step of the business logic.
+
+- Put a short comment at the top of each block with **goal** and **why**:
+  - **goal**: the outcome this step is trying to achieve, named concretely
+  - **why**: the business reason, so the reader has context without reading the
+    code
+- Prefer one line when both fit without becoming cryptic: `// <goal> so <why>.`
+- Use two lines when packing them into one would force jargon or omit context —
+  goal first, why second. Follow the clarity rule in section 0.
+- Do not narrate each statement (no "loop X then copy Y then assign Z"). The
+  goal names the outcome, not the mechanics.
+- A block should be a meaningful unit of work, not a single trivial line. Group
+  the statements that together accomplish one step.
+- Keep the natural order of the domain flow. For example, validating a landing
+  page reads as: get landing page / pre-process -> extract deal skus -> verify
+  against product displays.
+- Error handling that belongs to a step stays inside that step's block.
+
+Good (one line — goal + why):
+
+```go
+// Copy parent_pins onto default_sku so listing-page sort is not limited to the deal representative.
+if defaultSKU != "" && defaultSKU != dealDefaultSKU {
+```
+
+Good (two lines when the why needs the edge):
+
+```go
+// Copy parent_pins onto default_sku when it is not the deal representative.
+// Listing-page sort needs the normal representative, not only deal_default_sku.
+```
+
+Bad (why only — the reader still has to infer what the block does):
+
+```go
+// Listing-page sort reads parent_pins on default_sku, which may not be the deal representative.
+```
+
+Bad (goal only — no business context):
+
+```go
+// Copy parent_pins onto default_sku.
+```
+
+Bad (how — narrates the next statements):
+
+```go
+// Make a copied slice and assign parentPins[defaultSKU].
+```
+
+Example shape:
+
+```go
+// validateLandingPage validates one landing page. It verifies:
+// - data is stored correctly according to the landing page template
+// - stored deal_skus match the skus resolved from deal_ids
+func (l *landingPageUsecase) validateLandingPage(ctx context.Context, reporter *entity.Reporter, landingPage *entity.LandingPage) {
+	// Skip product-display storage so banner-only landing pages are not listed as products.
+	if landingPage.Template == entity.BannerTemplate {
+		l.verifyBannerNotStored(ctx, reporter, landingPage)
+		return
+	}
+
+	// Resolve deal_ids to skus so stored deal_skus can be verified against the source of truth.
+	mapDealIDToSKUs, err := l.mapSkusToDealIDs(ctx, landingPage)
+	if err != nil {
+		reporter.Add(entity.LandingPageIssue{
+			LandingPageID: landingPage.ID,
+			ScheduleID:    defaultScheduleID,
+			Type:          issueTypeError,
+			Message:       "failed to map skus to deal ids: " + err.Error(),
+		})
+		return
+	}
+
+	// Verify stored deal_skus vs resolved skus so every schedule matches the source of truth.
+	l.verifyDealSKUs(reporter, landingPage.ID, defaultScheduleID, landingPage.DealIDs, landingPage.DealSkus, mapDealIDToSKUs)
+	for _, schedule := range landingPage.Schedules {
+		l.verifyDealSKUs(reporter, landingPage.ID, schedule.ID, schedule.DealIDs, schedule.DealSkus, mapDealIDToSKUs)
+	}
+
+	// Verify membership and pinned positions so the landing page is materialized in product displays.
+	l.verifyStoredInProductDisplays(ctx, reporter, landingPage, mapDealIDToSKUs)
+}
+```
+
+## 3. When to relax the rules
+
+- Very small functions (a guard, a one-line getter, a trivial constructor) do not
+  need internal blocks; the function comment alone is enough.
+- If a step is genuinely a single self-explanatory line, a block comment can be
+  omitted — do not add noise just to satisfy the format.
+- Never split a block so finely that each block is one line; blocks must carry a
+  complete step of logic.

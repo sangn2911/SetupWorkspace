@@ -11,3 +11,20 @@ vim.pack.add({
 -- vim.cmd.colorscheme("kanagawa-dragon")
 -- vim.cmd.colorscheme("gruvbox")
 vim.cmd.colorscheme("melange")
+
+-- Drop the editor fill so Kitty's transparent background shows through.
+local function clear_editor_bg()
+  for _, group in ipairs({
+    "Normal",
+    "NormalNC",
+    "NormalFloat",
+    "SignColumn",
+    "EndOfBuffer",
+    "LineNr",
+    "FoldColumn",
+  }) do
+    vim.api.nvim_set_hl(0, group, { bg = "NONE" })
+  end
+end
+clear_editor_bg()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = clear_editor_bg })

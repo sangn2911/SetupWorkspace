@@ -181,4 +181,18 @@ else
   vim.keymap.set("n", "<C-M-d>", function()
     vim.diagnostic.open_float(nil, { focus = true, scope = "cursor" })
   end, { desc = "Show LSP diagnostic" })
+
+  -- Open netrw in the current file's directory. Kitty sends Ctrl+Shift+E as CSI u.
+  vim.keymap.set({ "n", "i" }, "<C-S-e>", "<Cmd>Explore<CR>", { desc = "Open netrw" })
+  vim.keymap.set({ "n", "i" }, "<Esc>[101;6u", "<Cmd>Explore<CR>", { desc = "Open netrw" })
+
+  -- netrw: a creates a file (%); A creates a folder (d). remap so netrw's maps run.
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "netrw",
+    callback = function(ev)
+      local opts = { buffer = ev.buf, remap = true, silent = true }
+      vim.keymap.set("n", "a", "%", vim.tbl_extend("force", opts, { desc = "Create file" }))
+      vim.keymap.set("n", "A", "d", vim.tbl_extend("force", opts, { desc = "Create folder" }))
+    end,
+  })
 end

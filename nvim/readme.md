@@ -112,3 +112,7 @@ Linux TTY does not send Ctrl+Enter / Ctrl+Alt as distinct keys unless Kitty uses
 - `shift+alt+f`
 
 Also: underline cursor, font size 15, no window decorations.
+
+Background `#2d2a2e` and foreground `#fcfcfa` match Cursor Monokai Pro. `background_opacity 0.85` (live tweak with `kitty @ set-background-opacity`).
+
+Tabs: `Alt+1` … `Alt+8` switch tabs (`Alt+9` left for the OS). Bar `#403e41`, font 12pt, active title `#c1c0c0`, inactive title `#727072`.
