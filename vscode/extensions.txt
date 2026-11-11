@@ -1,0 +1,11 @@
+joshmu.periscope@1.16.1
+mhutchie.git-graph@1.30.0
+mk12.better-git-line-blame@0.2.15
+ms-vscode-remote.remote-containers@0.469.0
+ms-vscode-remote.remote-ssh-edit@0.87.0
+ms-vscode-remote.remote-ssh@0.122.0
+ms-vscode-remote.remote-ssh@0.128.0
+ms-vscode.remote-explorer@0.5.0
+pkief.material-icon-theme@5.39.0
+subpixelgames.generate-sequence@0.0.2
+vscodevim.vim@1.32.4

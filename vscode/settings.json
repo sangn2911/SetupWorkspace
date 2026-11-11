@@ -1,45 +1,50 @@
 {
-    // -- User settings
-    // Disable features
     "window.titleBarStyle": "custom",
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,
-    "chat.disableAIFeatures": true,
-    "chat.useAgentsMdFile": false,
-    "chat.agent.enabled": false,
-    "chat.agent.thinking.collapsedTools": "always",
-    "telemetry.editStats.enabled": false,
-    "telemetry.feedback.enabled": false,
-    // Vim
-    "vim.cursorStylePerMode.insert": "line",
-    "vim.cursorStylePerMode.normal": "block-outline",
-    "vim.cursorStylePerMode.visual": "line",
-    "vim.cursorStylePerMode.replace": "line",
-    "vim.useSystemClipboard": true,
-    // Terminal
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.enablePersistentSessions": false,
-    "debug.console.fontFamily": "'MesloLGS NF'",
-    "debug.console.fontSize": 15,
-    // Workbench
-    "workbench.settings.showAISearchToggle": false,
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Monokai",
-    // Editor
-    "window.zoomLevel": 1,
-    "editor.fontSize": 15,
-    "editor.fontFamily": "'MesloLGS NF'",
-    "editor.lineNumbers": "relative",
-    "editor.links": false,
-    "git.autorefresh": true,
-    "files.watcherExclude": {
-        "**/.git/objects/**": false,
-        "**/.git/subtree-cache/**": false
-    },
-    // -- Application settings
     "extensions.autoCheckUpdates": false,
     "telemetry.telemetryLevel": "off",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<CR>"
+            ]
+        }
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<CR>"
+            ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ],
+            "silent": true
+        },
         {
             "before": [
                 "c"
@@ -58,6 +63,36 @@
                 "\"",
                 "_",
                 "x"
+            ]
+        },
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "after": [
+                "g",
+                "g",
+                "v",
+                "G",
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
             ]
         }
     ],
@@ -105,5 +140,7 @@
             ]
         }
     ],
-    "window.newWindowProfile": "Go"
+    "window.newWindowProfile": "code_db",
+    "window.menuBarVisibility": "classic",
+    "keyboard.dispatch": "keyCode"
 }

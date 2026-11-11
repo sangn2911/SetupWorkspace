@@ -1,0 +1,815 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    // ----- General / Workbench -----
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+m a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+    },
+    // ----- VSCode RenameInput Navigation -----
+    // {
+    //     "key": "alt+h",
+    //     "command": "cursorLeft",
+    //     "when": "textInputFocus && renameInputVisible"
+    // },
+    // {
+    //     "key": "alt+l",
+    //     "command": "cursorRight",
+    //     "when": "renameInputVisible && inputFocus"
+    // },
+    // {
+    //     "key": "alt+w",
+    //     "command": "cursorWordStartLeft",
+    //     "when": "renameInputVisible && inputFocus"
+    // },
+    // {
+    //     "key": "alt+e",
+    //     "command": "cursorWordEndRight",
+    //     "when": "renameInputVisible && inputFocus"
+    // },
+    // ----- VSCode Navigation Shortcuts ----- 
+    {
+        "key": "shift+alt+3",
+        "command": "merge.goToNextUnhandledConflict",
+        "when": "isMergeEditor || isMergeResultEditor"
+    },
+    {
+        "key": "alt+1",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+e", // Move to ctrl+p
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+alt+-", // Move to shift+alt+h
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "shift+alt+h",
+        "command": "workbench.action.navigateBack",
+        "when": "editorTextFocus && canNavigateBack"
+    },
+    {
+        "key": "ctrl+shift+-", // Move to shift+alt+l
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "workbench.action.navigateForward",
+        "when": "editorTextFocus && canNavigateForward"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateBack
+        "command": "-references-view.showCallHierarchy",
+        "when": "editorHasCallHierarchyProvider"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateForward
+        "command": "-editor.showCallHierarchy",
+        "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateIncomingCalls
+        "command": "-editor.showIncomingCalls",
+        "when": "callHierarchyVisible && callHierarchyDirection == 'outgoingCalls'"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateOutgoingCalls
+        "command": "-editor.showOutgoingCalls",
+        "when": "callHierarchyVisible && callHierarchyDirection == 'incomingCalls'"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateSubtypes
+        "command": "-editor.showSubtypes",
+        "when": "typeHierarchyVisible && typeHierarchyDirection == 'supertypes'"
+    },
+    {
+        "key": "shift+alt+h", // Turn off to use for navigateSupertypes
+        "command": "-editor.showSupertypes",
+        "when": "typeHierarchyVisible && typeHierarchyDirection == 'subtypes'"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.acceptSelectedQuickOpenItem",
+        "when": "inQuickOpen"
+    },
+    // ----- VSCode Layout Shortcuts -----
+    {
+        "key": "alt+left",
+        "command": "workbench.action.decreaseViewSize"
+    },
+    {
+        "key": "alt+right",
+        "command": "workbench.action.increaseViewSize"
+    },
+    {
+        "key": "ctrl+alt+space", // Hide sidebar when in Markdown files (as ctrl+b used for bold in Markdown)
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    // ----- VSCode Terminal Shortcuts -----
+    {
+        "key": "ctrl+shift+c",
+        "command": "workbench.action.terminal.openNativeConsole",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+c", // Turn off to use for copy in terminal
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+down", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.selectToNextCommand",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+down", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.scrollDown",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "ctrl+shift+up", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.selectToPreviousCommand",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+up", // No need, zsh vim solves this problem
+        "command": "-workbench.action.terminal.scrollUp",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-notebook.cell.pasteAbove",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    // ----- VSCode Editor Shortcuts -----
+    {
+        "key": "ctrl+shift+alt+down", // Move to ctrl+shift+down
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+up", // Move to ctrl+shift+up
+        "command": "-editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+down", // Move to shift+alt+down
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+up", // Move to shift+alt+up
+        "command": "-editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+z", // Turn off to use for toggle line wrapping
+        "command": "-workbench.action.terminal.sizeToContentWidth",
+        "when": "terminalFocus && terminalHasBeenCreated && terminalIsOpen || terminalFocus && terminalIsOpen && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+down", // Move to shift+alt+down
+        "command": "-editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+down", // WARN: should practice visual block in Vim
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+up", // Move to shift+alt+up
+        "command": "-editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+up", // WARN: should practice visual block in Vim
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+right", // Move to shift+alt+right
+        "command": "-editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+right",
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+left", // Move to shift+alt+left
+        "command": "-editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+left",
+        "command": "editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+i", // Move to shift+alt+f
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "vim.active && vim.mode == 'Normal' && editorTextFocus && !editorHasSelection"
+    },
+    {
+        "key": "ctrl+shift+q",
+        "command": "git.openFile",
+        "when": "editorFocus && isInDiffEditor"
+    },
+    {
+        "key": "ctrl+shift+q",
+        "command": "git.openChange",
+        "when": "editorFocus && !isInDiffEditor"
+    },
+    // ----- VSCode Search Shortcuts -----
+    {
+        "key": "shift+alt+f", // Turn off to use for formatting document
+        "command": "-filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
+    },
+    {
+        "key": "shift+alt+f", // Turn off to use for formatting document
+        "command": "-search.action.restrictSearchToFolder",
+        "when": "folderMatchWithResourceFocus && searchViewletVisible"
+    },
+    // ----- Cursor AI Shortcuts -----
+    {
+        "key": "ctrl+alt+1",
+        "command": "workbench.action.openPreviousRecentlyUsedEditor"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "-aiSettings.action.open"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-aichat.newchataction"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-composer.startComposerPrompt"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "-workbench.action.toggleAgentsFromKeyboard",
+        "when": "!isAuxiliaryWindowFocusedContext && isGlass == false"
+    },
+    {
+        "key": "ctrl+alt+h",
+        "command": "workbench.action.toggleAgentsFromKeyboard",
+        "when": "!isAuxiliaryWindowFocusedContext && isGlass == false"
+    },
+    {
+        "key": "alt+l",
+        "command": "editor.action.inlineSuggest.acceptNextWord",
+        "when": "editorTextFocus && !editorReadonly && (cppSuggestion || inlineSuggestionVisible) && (!vim.active || vim.mode == 'Insert' || vim.mode == 'Normal')"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "-composer.newAgentChat"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-cursor.toggleAgentWindowIDEUnification",
+        "when": "!isGlass && workbenchState != 'empty'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-composer.toggleChatAsEditor",
+        "when": "composerFocused && !editorTextFocus"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "-redo"
+    },
+    // ----- VSCode Window Shortcuts -----
+    // Vim leader. Space chords are handled in settings.json (vim.leader).
+    // These copies run only when the Vim extension is off.
+    // {
+    //     "key": "space e",
+    //     "command": "workbench.action.closeOtherEditors",
+    //     "when": "editorTextFocus && !vim.active"
+    // },
+    // {
+    //     "key": "space q",
+    //     "command": "workbench.action.closeActiveEditor",
+    //     "when": "editorTextFocus && !vim.active"
+    // },
+    // {
+    //     "key": "space o",
+    //     "command": "workbench.action.copyEditorToNewWindow",
+    //     "when": "editorTextFocus && !vim.active"
+    // },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.terminal.killEditor",
+        "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated || terminalEditorFocus && terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+w e",
+        "command": "workbench.action.closeOtherEditors",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+q",
+        "command": "workbench.action.closeEditorsInOtherGroups",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+alt+p",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+w e",
+        "command": "runCommands",
+        "when": "terminalFocus && terminalCount > 1",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.focusNext",
+                "workbench.action.terminal.kill"
+            ]
+        }
+    },
+    {
+        "key": "ctrl+w q",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+w q",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+w shift+q",
+        "command": "workbench.action.terminal.killAll",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w o",
+        "command": "workbench.action.copyEditorToNewWindow",
+        "when": "editorFocus && findWidgetVisible || editorFocus && searchViewletVisible && !findWidgetVisible"
+    },
+    {
+        "key": "ctrl+m o",
+        "command": "-workbench.action.copyEditorToNewWindow",
+        "when": "activeEditor"
+    },
+    {
+        "key": "alt+-",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+=",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "workbench.action.togglePanel",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+alt+m",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    // ----- VSCode Git Shortcuts -----
+    {
+        "key": "ctrl+w g",
+        "command": "git-graph.view"
+    },
+    {
+        "key": "shift+alt+3",
+        "command": "merge-conflict.next"
+    },
+    {
+        "key": "shift+alt+4",
+        "command": "workbench.action.compareEditor.nextChange",
+        "when": "textCompareEditorVisible"
+    },
+    // ----- VSCode Conflict Shortcuts (Disabled) -----
+    {
+        "key": "alt+h", // Turn off as never need accessibilityHelpOpenHelpLink
+        "command": "-editor.action.accessibilityHelpOpenHelpLink",
+        "when": "accessibilityHelpIsShown"
+    },
+    {
+        "key": "alt+h", // Turn off as never need testing.isPeekVisible
+        "command": "-testing.toggleTestingPeekHistory",
+        "when": "testing.isPeekVisible"
+    },
+    {
+        "key": "alt+h", // Turn off as never need inlineDiffs.hasInlineDiffsInAnyEditor
+        "command": "-editor.action.inlineDiffs.previousDiffFile",
+        "when": "editorTextFocus && inlineDiffs.hasInlineDiffsInAnyEditor"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    // ----- VSCode Extension Conflict Shortcuts (Disabled) -----
+    {
+        "key": "shift+alt+q",
+        "command": "-vscode-pokemon.spawn-random-pokemon"
+    },
+    {
+        "key": "shift+alt+w",
+        "command": "-vscode-pokemon.spawn-pokemon"
+    },
+    // ----- Vim Shortcuts (Start here) -----
+    {
+        "key": "shift+alt+v",
+        "command": "toggleVim"
+    },
+    // ----- Vim Editor Shortcuts -----
+    {
+        "key": "shift+alt+j",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+k",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "tab",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "removeSecondaryCursors",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+c", // Turn off to use for VSCode copy
+        "command": "-extension.vim_ctrl+c",
+        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "editor.action.clipboardCopyAction",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+x", // Turn off to use for VSCode cut
+        "command": "-extension.vim_ctrl+x",
+        "when": "editorTextFocus && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.clipboardCutAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+z",
+        "command": "undo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+z",
+        "command": "redo",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "u",
+        "command": "undo",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "redo",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "extension.vim_ctrl+d",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal' && vim.use<C-d> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+d", // WARN: Cannot scroll down half page in Visual mode
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus && vim.active && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+u", // WARN: Cannot scroll up half page in Visual mode
+        "command": "-extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "cursorUndo",
+        "when": "textInputFocus && vim.active && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+f", // WARN: Turn off scroll down full page
+        "command": "-extension.vim_ctrl+f",
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+b", // WARN: Turn off scroll up full page
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+h", // WARN: Turn off delete word left in Insert mode
+        "command": "-extension.vim_ctrl+h",
+        "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode != 'Insert'"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "editor.action.selectHighlights",
+        "when": "editorTextFocus && editorTextFocus && vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "editor.action.copyLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly && vim.mode == 'Normal' || vim.mode == 'Visual'"
+    },
+    {
+        "key": "alt+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible && editorTextFocus"
+    },
+    {
+        "key": "shift+k",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+j",
+        "command": "editor.action.triggerParameterHints",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "alt+d", // Use same as zsh-vi-mode
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    },
+    {
+        "key": "alt+h", // Use same as zsh-vi-mode
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    },
+    // {
+    //     "key": "alt+l", // Use same as zsh-vi-mode
+    //     "command": "extension.vim_ctrl+[",
+    //     "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    // },
+    {
+        "key": "alt+s",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "extension.vim_ctrl+c",
+                "workbench.action.files.save"
+            ]
+        },
+        "when": "editorTextFocus && vim.active"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+j", // Insert new line (same as enter) in Insert mode
+        "command": "extension.vim_ctrl+j",
+        "when": "editorTextFocus && vim.mode == 'Insert' && vim.use<C-j> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "editor.action.inlineSuggest.trigger",
+        "when": "vim.active && vim.mode == 'Normal' && editorTextFocus && !editorHasSelection"
+    },
+    // ----- Vim Explorer Shortcuts (nvim-tree style) -----
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "z m",
+        "command": "workbench.files.action.collapseExplorerFolders",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "d",
+        "command": "deleteFile",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "y",
+        "command": "filesExplorer.copy",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "x",
+        "command": "filesExplorer.cut",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    {
+        "key": "p",
+        "command": "filesExplorer.paste",
+        "when": "filesExplorerFocus && !inputFocus && vim.active"
+    },
+    // ----- Vim Conflict Shortcuts (Disabled) -----
+    {
+        "key": "ctrl+l",
+        "command": "-extension.vim_navigateCtrlL",
+        "when": "editorTextFocus && vim.active && vim.use<C-l> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.selectAll",
+        "when": "vim.mode == 'active' && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "-workbench.action.closeWindow"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!isAuxiliaryWindowFocusedContext"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-markdownEditor.toggleMode",
+        "when": "markdownEditorActive"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "markdown-preview-enhanced.openPreviewToTheSide",
+        "when": "editorLangId =~ /^(markdown|quarto|prompt|instructions|chatagent|skill)$/"
+    },
+    {
+        "key": "ctrl+k v",
+        "command": "-markdown-preview-enhanced.openPreviewToTheSide",
+        "when": "editorLangId =~ /^(markdown|quarto|prompt|instructions|chatagent|skill)$/"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-editor.action.insertLineAfter",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "nifty.grpc.send",
+        "when": "editorTextFocus && editorLangId == 'grpc-request'"
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "-nifty.grpc.send",
+        "when": "editorTextFocus && editorLangId == 'grpc-request'"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "rest-client.request",
+        "when": "editorTextFocus && editorLangId == 'http'"
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "-rest-client.request",
+        "when": "editorTextFocus && editorLangId == 'http'"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "rest-client.request",
+        "when": "editorTextFocus && editorLangId == 'plaintext'"
+    },
+    {
+        "key": "ctrl+alt+r",
+        "command": "-rest-client.request",
+        "when": "editorTextFocus && editorLangId == 'plaintext'"
+    }
+]

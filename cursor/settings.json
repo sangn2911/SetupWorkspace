@@ -1,7 +1,5 @@
-// User settings
 {
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "editor.fontSize": 15,
     "editor.fontFamily": "'MesloLGS NF'",
     "debug.console.fontFamily": "JetBrainsMono-ExtraLight",
     "debug.console.fontSize": 15,
@@ -11,27 +9,179 @@
     "extensions.autoCheckUpdates": false,
     "telemetry.feedback.enabled": false,
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Monokai Pro",
     "material-icon-theme.folders.theme": "classic",
     "material-icon-theme.folders.color": "#ff7043",
     "git.confirmSync": false,
     // Customize settings
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Monokai",
     "editor.lineNumbers": "relative",
     "editor.links": false,
     "terminal.integrated.enablePersistentSessions": false,
     "files.associations": {
         ".env.example": "properties",
-        ".env": "properties"
+        ".env": "properties",
     },
-    "workbench.activityBar.orientation": "vertical",
+    "workbench.activityBar.orientation": "horizontal",
+    "editor.stickyScroll.maxLineCount": 2,
+    "workbench.editor.tabSizingFixedMaxWidth": 150,
+    "workbench.editor.tabSizingFixedMinWidth": 100,
+    "workbench.editor.tabSizing": "fixed",
+    "window.controlsStyle": "custom",
+    "window.dialogStyle": "custom",
+    "editor.wordWrap": "off",
+    "update.showReleaseNotes": false,
+    "extensions.autoUpdate": false,
+    "editor.fontSize": 15,
+    "crashReporting.enabled": "off",
+    "tooltitude.codeLens.debugTableTest": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "cursor.cpp.enablePartialAccepts": true,
+    "editor.inlineSuggest.enabled": false,
+    "editor.quickSuggestions": {
+        "other": "inline",
+        "comments": "inline",
+        "strings": "inline"
+    },
+    "window.menuBarVisibility": "compact",
+    "diffEditor.renderSideBySide": true,
+    "window.autoDetectColorScheme": false,
+    "editor.inlineSuggest.edits.showCollapsed": true,
+    // Periscope uses VS Code Quick Pick (real popup). Enable preview so results peek in the editor.
+    "editor.enablePreview": true,
     // Vim settings
     "vim.cursorStylePerMode.insert": "line",
-    "vim.cursorStylePerMode.normal": "block-outline",
-    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.normal": "underline",
+    "vim.cursorStylePerMode.visual": "underline",
     "vim.cursorStylePerMode.replace": "line",
     "vim.useSystemClipboard": true,
+    "vim.vimrc.enable": true, // load ~/.vimrc
+    "vim.incsearch": true, // live jump while typing /
+    "vim.hlsearch": true, // keep matches highlighted
+    "vim.ignorecase": true, // case-insensitive search
+    "vim.smartcase": true, // case-sensitive if pattern has uppercase
+    "vim.inccommand": "replace", // live :s preview (status-bar : only)
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<A-l>": false
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<CR>"
+            ]
+        }
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<CR>"
+            ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        // leaders
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "E"
+            ],
+            "commands": [
+                "workbench.action.closePanel",
+                "workbench.action.closeSidebar",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.copyEditorToNewWindow"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "periscope.searchFiles"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "g"
+            ],
+            "commands": [
+                "periscope.search"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ],
+            "silent": true
+        },
         {
             "before": [
                 "c"
@@ -50,6 +200,36 @@
                 "\"",
                 "_",
                 "x"
+            ]
+        },
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "after": [
+                "g",
+                "g",
+                "v",
+                "G",
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
             ]
         }
     ],
@@ -95,23 +275,43 @@
                 "_",
                 "x"
             ]
-        }
-    ],
-    "editor.stickyScroll.maxLineCount": 2,
-    "kafka.clusters": [
+        },
         {
-            "name": "local",
-            "type": "kafka",
-            "brokers": [
-                "localhost:9092"
+            "before": [
+                "s"
             ],
-            "securityProtocol": "PLAINTEXT"
+            "after": [
+                "\"",
+                "_",
+                "s"
+            ]
         }
     ],
-    "workbench.editor.tabSizingFixedMaxWidth": 150,
-    "workbench.editor.tabSizingFixedMinWidth": 100,
-    "workbench.editor.tabSizing": "fixed",
-    "window.controlsStyle": "custom",
-    "window.dialogStyle": "custom",
-    "editor.wordWrap": "on"
+    "tooltitude.pb.importsCheckEnabled": false,
+    "tooltitude.pb.refsCheckEnabled": false,
+    "cursor.cpp.disabledLanguages": [
+        "markdown",
+        "plaintext"
+    ],
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.hideOnboarding": true,
+    "keyboard.dispatch": "keyCode",
+    "claudeCode.lockEditorGroups": false,
+    "terminal.explorerKind": "external",
+    "terminal.external.linuxExec": "kitty",
+    "claudeCode.useTerminal": true,
+    "markdown-preview-enhanced.codeBlockTheme": "atom-dark.css",
+    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
+    "git.openRepositoryInParentFolders": "never",
+    "cursor.composer.queueMessageDefaultBehavior": "steer",
+    "git-graph.maxDepthOfRepoSearch": 1,
+    "git.repositoryScanMaxDepth": 2
+    // // Neovim
+    // "extensions.experimental.affinity": {
+    //     "asvetliakov.vscode-neovim": 1
+    // },
+    // "cursor.cpp.disabledLanguages": [
+    //     "markdown",
+    //     "plaintext"
+    // ]
 }

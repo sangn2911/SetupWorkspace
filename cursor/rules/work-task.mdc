@@ -1,0 +1,67 @@
+---
+description: >-
+  Enforce work_task v1 shape on .general/tasks markdown files. Optional sprint:
+  when set, require sprint meta and SPRINT_<N>_* filename. Missing/outdated
+  stamp or sprint/name mismatch → upgrade via create-work-task skill; preserve
+  content.
+globs: .general/tasks/**/*.md
+alwaysApply: false
+---
+
+# Work-task file compliance
+
+Applies when reading or editing files under `.general/tasks/`.
+
+## Compliance check
+
+### 1. Frontmatter (file top)
+
+Minimum:
+
+```yaml
+---
+work_task: v1
+---
+```
+
+Sprint is **optional**. When the user (or file) has a sprint, include it:
+
+```yaml
+---
+work_task: v1
+sprint: 34
+---
+```
+
+If `sprint` is set, visible meta must include `**Sprint:** <N>` matching frontmatter.
+
+### 2. Filename
+
+| Mode | Filename |
+|------|----------|
+| No sprint | `<TOPIC>.md` (e.g. `CUSTOMER_SERVICE_PAGES.md`) |
+| Sprint `<N>` | `SPRINT_<N>_<TOPIC>.md` (e.g. `SPRINT_34_CUSTOMER_SERVICE_PAGES.md`) |
+
+| Result | Agent action |
+|--------|----------------|
+| `work_task: v1`, no `sprint`, filename not `SPRINT_*` + required sections | Compliant (no-sprint). |
+| `work_task: v1` + `sprint: <N>` + filename `SPRINT_<N>_*.md` + required sections | Compliant (sprint). |
+| `sprint` set but filename not `SPRINT_<N>_*`, or filename `SPRINT_<N>_*` but `sprint` missing/mismatched | Fix meta and/or rename. Preserve content. Do not invent a sprint if neither side has one. |
+| `work_task: skip` | Leave the file alone. |
+| Missing, other value, or old `work_task` version | **Non-compliant.** Follow the **create-work-task** skill **Upgrade workflow**. |
+| `*.plan.md` with Cursor plan frontmatter and no `work_task` | Prefer `work_task: skip` unless the user asks to convert it. |
+
+## Required v1 sections (after frontmatter)
+
+- `#` title + meta (`Status`, `Last updated`; `Sprint` only when sprint is set)
+- `## Dashboard (daily self-check)` (+ `### Daily log`)
+- `## Checkpoint (keep history; do not delete done rows)`
+- `## Discuss (open questions)`
+
+## Hard rules
+
+- Preserve wording, checklists, links, and done/undone state from the old file.
+- Do not invent Jira keys, progress, answers, or sprint numbers.
+- Do not delete content; park leftovers under `## Legacy notes`.
+- Do not ask for sprint on every create — only apply sprint naming/meta when the user provides it (or the file already has it).
+- Creating a **new** task file also follows the **create-work-task** skill (Jira/Confluence optional; sprint optional).

@@ -1,0 +1,95 @@
+{
+    "material-icon-theme.folders.color": "#ff7043",
+    "material-icon-theme.folders.theme": "classic",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "'JetBrains Mono, Light'",
+    "terminal.integrated.enablePersistentSessions": false,
+    "markdown.preview.fontFamily": "'JetBrains Mono, Light'",
+    "debug.console.fontFamily": "'JetBrains Mono, Light'",
+    "debug.console.fontSize": 15,
+    "chat.editor.fontFamily": "'JetBrains Mono, Light'",
+    "chat.disableAIFeatures": true,
+    "chat.useAgentsMdFile": false,
+    "chat.agent.enabled": false,
+    "chat.agent.thinking.collapsedTools": "always",
+    "telemetry.editStats.enabled": false,
+    "telemetry.feedback.enabled": false,
+    // Vim settings    
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.normal": "underline",
+    "vim.cursorStylePerMode.visual": "underline",
+    "vim.cursorStylePerMode.replace": "line",
+    "vim.useSystemClipboard": true,
+    "vim.incsearch": true, // live jump while typing /
+    "vim.hlsearch": true, // keep matches highlighted
+    "vim.ignorecase": true, // case-insensitive search
+    "vim.smartcase": true, // case-sensitive if pattern has uppercase
+    "vim.inccommand": "replace", // live :s preview (status-bar : only)
+    "vim.handleKeys": {
+        "<A-l>": false
+    }, 
+    // Font
+    "editor.codeLensFontFamily": "'JetBrains Mono, Light'",
+    "editor.inlayHints.fontFamily": "'JetBrains Mono, Light'",
+    "notebook.markup.fontFamily": "'JetBrains Mono, Light'",
+    // Workbench
+    "workbench.settings.showAISearchToggle": false,
+    "workbench.colorTheme": "Monokai Pro",
+    // Customize
+    "editor.fontSize": 15,
+    "editor.fontFamily": "'JetBrains Mono, Light'",
+    "editor.inlineSuggest.fontFamily": "'JetBrains Mono, Light'",
+    "editor.lineNumbers": "relative",
+    "editor.links": false,
+    "git.autorefresh": true,
+    "git.confirmSync": false,
+    "window.zoomLevel": 1,
+    "files.watcherExclude": {
+        "**/.git/objects/**": false,
+        "**/.git/subtree-cache/**": false
+    },
+    "files.associations": {
+        ".env.example": "properties",
+        ".env": "properties",
+        "*.es-config": "yaml"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "chat.fontFamily": "'JetBrains Mono, Light'",
+    "yaml.schemas": {
+        "file:///home/homura/.vscode/extensions/atlassian.atlascode-4.0.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "kafka.clusters": [
+        {
+            "name": "Local",
+            "type": "kafka",
+            "brokers": [
+                "localhost:9092"
+            ],
+            "securityProtocol": "PLAINTEXT"
+        }
+    ],
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "/home/homura/.vimrc",
+    "editor.cursorBlinking": "phase",
+    "workbench.sideBar.location": "right",
+    "workbench.activityBar.location": "top",
+    "extensions.allowOpenInModalEditor": true,
+    "workbench.editor.useModal": "off",
+    "workbench.startupEditor": "none",
+    "workbench.editor.enablePreview": false,
+    "sqltools.connections": [],
+    "[sql]": {
+        "editor.defaultFormatter": "cweijan.vscode-mysql-client2"
+    },
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+    },
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "vscode-json-editor.theme": "dark",
+    "git-graph.maxDepthOfRepoSearch": 1,
+    "material-icon-theme.hidesExplorerArrows": true,
+    "markdown-preview-enhanced.mermaidTheme": "dark",
+    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
+    "debug.breakpointsView.presentation": "tree",
+    "betterGitLineBlame.reblameOnSave": true
+}

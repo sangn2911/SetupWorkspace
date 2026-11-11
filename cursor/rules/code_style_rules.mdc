@@ -6,6 +6,17 @@ alwaysApply: true
 These rules make functions easy to read for a new team member: every function
 says *why* it exists, and each body block states its *goal* and *why*.
 
+## Enforcement (do not skip)
+
+- Apply on **every** Go (and same-style) edit in the same turn as the code change —
+  not as a follow-up polish pass, and not only when the user mentions comments.
+- Functional correctness does **not** exempt these rules. A change that ships
+  without function why-comments and labelled body blocks is incomplete.
+- Do not trade comments away for shorter diffs or faster replies. Prefer one
+  extra comment line over uncommented logic.
+- Small helpers still need a function why-comment; only omit *body* block
+  comments when section 3 says they may be relaxed.
+
 ## 0. Clarity (applies to every comment)
 
 Every comment — function-level or block-level — must state the purpose clearly.
@@ -19,6 +30,9 @@ Every comment — function-level or block-level — must state the purpose clear
   first read. Do not pack several ideas into a jargon phrase (e.g.
   "min-priority-per-key set"). Write a full sentence that names the subject, the
   rule, and the outcome.
+- Prefer one line by default when the idea fits without becoming cryptic.
+- When refactoring a long comment, do not compress it into a dense paragraph.
+  Keep a short summary line, then use short `-` bullets for the remaining points.
 - Short is not the goal; clear is. Prefer one extra line over a comment the
   reader has to decode.
 
@@ -86,6 +100,8 @@ does one conceptual step of the business logic.
 - Prefer one line when both fit without becoming cryptic: `// <goal> so <why>.`
 - Use two lines when packing them into one would force jargon or omit context —
   goal first, why second. Follow the clarity rule in section 0.
+- When refactoring a long block comment, use a short summary line plus `-`
+  bullets instead of a multi-line paragraph.
 - Do not narrate each statement (no "loop X then copy Y then assign Z"). The
   goal names the outcome, not the mechanics.
 - A block should be a meaningful unit of work, not a single trivial line. Group
@@ -107,6 +123,15 @@ Good (two lines when the why needs the edge):
 ```go
 // Copy parent_pins onto default_sku when it is not the deal representative.
 // Listing-page sort needs the normal representative, not only deal_default_sku.
+```
+
+Good (refactoring a long comment → summary + short bullets):
+
+```go
+// Attach peer.service=hsk-meta on this CLIENT span so:
+// - MinDurationFilteringSpanProcessor keeps it (bare CLIENT spans are filtered).
+// - The service map draws the catalog→hsk-meta edge.
+// - A fast call does not leave hsk-meta's SERVER span with a dead ParentSpanId.
 ```
 
 Bad (why only — the reader still has to infer what the block does):

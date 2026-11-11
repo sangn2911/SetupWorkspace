@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "atlassian-mcp": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "mcp/atlassian",
+        "--transport",
+        "stdio",
+        "--confluence-url=<CONFLUENCE_URL>",
+        "--confluence-username=<CONFLUENCE_USERNAME>",
+        "--confluence-token=<CONFLUENCE_TOKEN>",
+        "--jira-url=<JIRA_URL>",
+        "--jira-username=<JIRA_USERNAME>",
+        "--jira-token=<JIRA_TOKEN>"
+      ]
+    },
+    "catalog-gopls": {
+      "command": "mcp-gopls",
+      "args": [
+        "--workspace",
+        "/home/homura/Workspaces/Hasaki/storefront/catalog"
+      ],
+      "env": {
+        "MCP_GOPLS_LOG_LEVEL": "info"
+      }
+    },
+    "catalog-consumer-gopls": {
+      "command": "mcp-gopls",
+      "args": [
+        "--workspace",
+        "/home/homura/Workspaces/Hasaki/storefront/catalog-consumer"
+      ],
+      "env": {
+        "MCP_GOPLS_LOG_LEVEL": "info",
+        "GOTOOLCHAIN": "local",
+        "GOROOT": "/home/homura/Workspaces/Environments/go1.25.8",
+        "PATH": "/home/homura/Workspaces/Environments/go1.25.8/bin:/home/homura/go/bin:/usr/bin"
+      }
+    }
+  }
+}
